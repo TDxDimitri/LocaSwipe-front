@@ -7,6 +7,10 @@ import {
 import { AuthProvider } from './domains/AuthenticatedRoute/contexts/AuthContext';
 import AuthenticatedRoute from './domains//AuthenticatedRoute/AuthenticatedRoute';
 import Login from './domains/Login/views/login';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import $ from 'jquery';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 
 function App() {
   return (
