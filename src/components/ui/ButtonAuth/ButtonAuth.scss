@@ -1,0 +1,29 @@
+// ButtonAuth.scss
+.button-auth-container {
+    width: 156px;
+    height: 48px;
+    background-color: #B3CDE0;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+  }
+  
+  .button-auth {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
+  .left {
+    left: 0;
+  }
+  
+  .right {
+    right: 0;
+  }
+  

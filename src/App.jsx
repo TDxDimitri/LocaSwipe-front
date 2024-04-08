@@ -11,6 +11,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
+import Welcome from './pages/welcome/welcome';
+import './App.css';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Welcome />} />
           {/* autres routes... */}
         </Routes>
       </Router>
