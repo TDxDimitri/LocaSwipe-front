@@ -1,0 +1,22 @@
+.customModal {
+    position: fixed;
+    background-color: white;
+    bottom: 0;
+    height: 80vh;
+    width: 100vw;
+    border: 1px solid #000000;
+    border-top-left-radius: 3rem;
+}
+.white {
+    background-color: white;
+}
+
+* {
+    background-color: #00263F;
+}
+.cstmInput {
+    padding: '10px 20px';
+    border: '1px solid #00263F';
+    border-radius: '10px';
+    cursor: 'pointer';
+}
