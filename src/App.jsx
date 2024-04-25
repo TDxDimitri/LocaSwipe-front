@@ -6,12 +6,13 @@ import {
 } from 'react-router-dom';
 import { AuthProvider } from './domains/AuthenticatedRoute/contexts/AuthContext';
 import AuthenticatedRoute from './domains//AuthenticatedRoute/AuthenticatedRoute';
-import Login from './domains/Login/views/login';
+import LoginPage from './pages/login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
-import Welcome from './pages/welcome/welcome';
+import WelcomePage from './pages/welcome/index';
+import Choice from './pages/choice/choice';
 import './App.css';
 
 function App() {
@@ -19,8 +20,9 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Welcome />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/choice" element={<Choice />} />
           {/* autres routes... */}
         </Routes>
       </Router>
