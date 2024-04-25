@@ -1,8 +1,8 @@
 import React from 'react';
-import './Card.scss';
-import CheckboxCircle from '../../../icons/checkbox-circle.svg';
+import './WelcomeCard.scss';
+import CheckboxCircle from '../../../../icons/checkbox-circle.svg';
 
-function Card({ title, text }) {
+function WelcomeCard({ title, text }) {
     return (
         <div className="card">
             <div className="card-header">
@@ -14,4 +14,4 @@ function Card({ title, text }) {
     );
 }
 
-export default Card;
+export default WelcomeCard;

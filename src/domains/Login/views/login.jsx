@@ -3,7 +3,7 @@ import AuthContext from '../../AuthenticatedRoute/contexts/AuthContext';
 import './login.scss';
 import { PrimaryButton } from '../../../components/ui/Button/Button';
 
-const Login = () => {
+const LoginDomain = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useContext(AuthContext);
@@ -28,7 +28,7 @@ const Login = () => {
           />
           <label className='white' htmlFor="password">Mot de passe</label>
           <input
-          className='mb-5 pb-1 white cstmInput'
+            className='mb-5 pb-1 white cstmInput'
             type="password"
             id="password"
             value={password}
@@ -48,4 +48,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginDomain;
