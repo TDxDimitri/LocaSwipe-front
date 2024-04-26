@@ -1,22 +1,23 @@
-import React, { useContext, useState } from 'react';
-import AuthContext from '../../AuthenticatedRoute/contexts/AuthContext';
+import React, { useState } from 'react';
 import './login.scss';
 import { PrimaryButton } from '../../../components/ui/Button/Button';
+import { useLogin } from '../hooks/useLogin';
 
 const LoginDomain = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useContext(AuthContext);
+  const { login, error } = useLogin();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(email, password);
+    await login(email, password);
   };
 
   return (
     <div style={{ backgroundColor: '#f0f0f0' }}>
       <div className='customModal p-5'>
         <h1 className='white'>Connexion</h1>
+        {error && <p className='white'>{error}</p>}
         <form className='d-flex white flex-column p-1' onSubmit={handleSubmit}>
           <label className='white' htmlFor="email">Adresse e-mail</label>
           <input className='pb-1 white cstmInput'
@@ -35,12 +36,12 @@ const LoginDomain = () => {
             onChange={e => setPassword(e.target.value)}
             required
           />
-          <div class>
-            <PrimaryButton text='connexion' buttonStyle={'connect'} />
+          <div>
+            <PrimaryButton text='Connexion' buttonStyle={'connect'} type='submit' />
           </div>
 
           <div>
-            <PrimaryButton text='connexion' buttonStyle={'secondary'} />
+            <PrimaryButton text='inscription' buttonStyle={'secondary'} />
           </div>
         </form>
       </div>

@@ -14,6 +14,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import WelcomePage from './pages/welcome/index';
 import Choice from './pages/choice/choice';
 import './App.css';
+import LandLordPage from './pages/landlord/landlord';
 
 function App() {
   return (
@@ -23,7 +24,12 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<WelcomePage />} />
           <Route path="/choice" element={<Choice />} />
-          {/* autres routes... */}
+
+          <Route element={<AuthenticatedRoute />}>
+            <Route path="/land" element={<LandLordPage />} />
+
+            {/* routes protégées... */}
+          </Route>
         </Routes>
       </Router>
     </AuthProvider>
