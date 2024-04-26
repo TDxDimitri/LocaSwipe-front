@@ -1,8 +1,10 @@
-import { useState } from 'react';
-import { ApiRegister } from '../utils/ApiRegister';
+import React, { useState } from 'react';
+import { useRegister } from '../hooks/useRegister';
+import { RegisterResponse } from '../../../models/RegisterResponse';
 
 function RegisterDomain() {
-  const [formData, setFormData] = useState({
+  const { register, error, success } = useRegister();
+  const [formData, setFormData] = useState<RegisterResponse>({
     firstname: '',
     lastname: '',
     email: '',
@@ -10,21 +12,15 @@ function RegisterDomain() {
     roleType: ''
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    try {
-      const data = await ApiRegister(formData); // Call ApiRegister function with formData
-      // Inscription réussie, rediriger ou afficher un message de confirmation
-    } catch (error) {
-      // Gérer les erreurs de l'API
-      console.error('Erreur lors de l\'inscription:', error.message);
-    }
+    await register(formData);
   };
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -60,12 +56,19 @@ function RegisterDomain() {
         onChange={handleChange}
         required
       />
-      <select name="roleType" value={formData.roleType} onChange={handleChange} required>
+      <select
+        name="roleType"
+        value={formData.roleType}
+        onChange={handleChange}
+        required
+      >
         <option value="">Sélectionner un rôle</option>
         <option value="admin">Administrateur</option>
         <option value="user">Utilisateur</option>
       </select>
-      <button type="submit">S'inscrire</button> {/* Remove quotes around S'inscrire */}
+      <button type="submit">S'inscrire</button>
+      {error && <p className="error">Erreur : {error}</p>}
+      {success && <p className="success">Inscription réussie !</p>}
     </form>
   );
 }

@@ -1,30 +1,22 @@
 import { useState } from 'react';
+import axios from 'axios';
+import { REGISTER_URL } from '../../../config/ApiUrls';
+import { RegisterResponse } from '../../../models/RegisterResponse';
 
-const useRegister = () => {
-    const [user, setUser] = useState({
-        username: '',
-        email: '',
-        password: '',
-    });
+export const useRegister = () => {
+    const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState<boolean>(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUser((prevUser) => ({
-            ...prevUser,
-            [e.target.name]: e.target.value,
-        }));
+    const register = async (userData: RegisterResponse) => {
+        try {
+            const response = await axios.post<RegisterResponse>(REGISTER_URL, userData);
+            setSuccess(true);
+            // Réinitialisez le formulaire ou effectuez d'autres actions ici si nécessaire
+        } catch (err) {
+            setError(err.response.data.message || 'Une erreur est survenue lors de l\'inscription.');
+            setSuccess(false);
+        }
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        // Ajoutez ici votre logique pour créer l'utilisateur
-        console.log('Création de l\'utilisateur :', user);
-    };
-
-    return {
-        user,
-        handleChange,
-        handleSubmit,
-    };
+    return { register, error, success };
 };
-
-export default useRegister;
