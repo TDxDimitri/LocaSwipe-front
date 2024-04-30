@@ -6,11 +6,11 @@ import { useLogin } from '../hooks/useLogin';
 const LoginDomain = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, error } = useLogin();
+  const { loginApi, error } = useLogin();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(email, password);
+    await loginApi(email, password);
   };
 
   return (
