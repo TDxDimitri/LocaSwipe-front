@@ -1,27 +1,56 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+import { UserRole } from '../../../models/LoginResponse';
 
-interface AuthContextProps {
-  user: any;
-  setUser: React.Dispatch<React.SetStateAction<any>>;
-}
-
-const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
-
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<any>(null);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
-
-  return (
-    <AuthContext.Provider value={{ user, setUser }}>
-      {children}
-    </AuthContext.Provider>
-  );
+export type AuthContextProps = {
+  isAuthenticated: boolean;
+  userRole: UserRole | null;
+  token: string | null;
+  login: (token: string, role: UserRole) => void;
+  logout: () => void;
+  setUserRole: React.Dispatch<React.SetStateAction<UserRole | null>>;
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const AuthContext = createContext<AuthContextProps | null>(null);
+
+export const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userRole, setUserRole] = useState<UserRole | null>(null);
+  const [token, setToken] = useState<string | null>(localStorage.getItem('token') || null);
+
+  useEffect(() => {
+    if (token) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, [token]);
+
+  const login = (token: string, role: UserRole | null) => {
+    if (role !== null) {
+      setToken(token);
+      setIsAuthenticated(true);
+      setUserRole(role);
+      localStorage.setItem('token', token);
+      localStorage.setItem('role', role);
+    }
+  };
+
+  const logout = () => {
+    setToken(null);
+    setIsAuthenticated(false);
+    setUserRole(null);
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+  };
+
+  const value: AuthContextProps = {
+    isAuthenticated,
+    userRole,
+    token,
+    login,
+    logout,
+    setUserRole,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};
