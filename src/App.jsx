@@ -27,7 +27,7 @@ function App() {
 
           {/* routes protégées avec AuthenticatedRoute */}
           <Route
-            path="/OwnerHomePage"
+            path="/owner"
             element={
               <AuthenticatedRoute allowedRoles={['owner']}>
                 <OwnerHomePage />
@@ -35,7 +35,7 @@ function App() {
             }
           />
           <Route
-            path="/TenantHomePage"
+            path="/tenant"
             element={
               <AuthenticatedRoute allowedRoles={['tenant']}>
                 <TenantHomePage />

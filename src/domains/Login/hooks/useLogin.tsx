@@ -16,9 +16,9 @@ export const useLogin = () => {
             const response: AuthResponse = await ApiLogin(email, password);
             login(response.token, response.role);
             if (response.role === 'tenant') {
-                navigate('/TenantHomePage');
+                navigate('/tenant');
             } else if (response.role === 'owner') {
-                navigate('/OwnerHomePage');
+                navigate('/owner');
             }
         } catch (error: any) {
             setError(error.message);
