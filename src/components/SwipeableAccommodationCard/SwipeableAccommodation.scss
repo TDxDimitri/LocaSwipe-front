@@ -48,7 +48,7 @@
 .buttons button {
   margin: 0 5px;
   padding: 10px 20px;
-  background-color: #fff;
+  background: none;
   color: #9198e5;
   border: none;
   border-radius: 5px;
@@ -57,7 +57,7 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: white;
   }
 
   &:disabled {

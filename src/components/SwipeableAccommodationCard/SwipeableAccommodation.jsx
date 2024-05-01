@@ -1,10 +1,14 @@
 import React, { useState, useRef, useMemo, useEffect } from 'react';
 import TinderCard from 'react-tinder-card';
 import './SwipeableAccommodation.scss';
+import likeIcon from '../../icons/like-icon.svg';
+import skipIcon from '../../icons/skip-icon.svg';
 
 const SwipeableAccommodationCard = ({ accommodations }) => {
     const [currentIndex, setCurrentIndex] = useState(null);
     const [lastDirection, setLastDirection] = useState();
+    const [cardIds, setCardIds] = useState(() => Array.from({ length: accommodations.length }, (_, i) => i));
+    const [animationSpeed, setAnimationSpeed] = useState(500);
     const currentIndexRef = useRef(currentIndex);
 
     const childRefs = useMemo(() => {
@@ -12,25 +16,37 @@ const SwipeableAccommodationCard = ({ accommodations }) => {
     }, [accommodations.length]);
 
     const updateCurrentIndex = (val) => {
-        if (val !== null) {
+        if (val !== null && val < cardIds.length) {
             setCurrentIndex(val);
             currentIndexRef.current = val;
         }
     };
 
     useEffect(() => {
-        if (accommodations.length > 0) {
-            updateCurrentIndex(accommodations.length - 1);
+        if (cardIds.length > 0) {
+            updateCurrentIndex(cardIds.length - 1);
         }
+    }, [cardIds]);
+
+    useEffect(() => {
+        setCardIds(() => Array.from({ length: accommodations.length }, (_, i) => i));
     }, [accommodations]);
 
-    const canGoBack = currentIndex < accommodations.length - 1;
+    const canGoBack = currentIndex < cardIds.length - 1;
 
     const canSwipe = currentIndex !== null && currentIndex >= 0;
 
-    const swiped = (direction, nameToDelete, index) => {
+    const swiped = async (direction, nameToDelete, index) => {
         setLastDirection(direction);
-        updateCurrentIndex(index - 1);
+        const newIndex = cardIds.findIndex((id) => id === index) - 1;
+        updateCurrentIndex(newIndex);
+
+        // Définir la vitesse d'animation
+        setAnimationSpeed(100);
+
+        // Attendre que l'animation se termine avant de mettre à jour cardIds
+        await new Promise((resolve) => setTimeout(resolve, animationSpeed));
+        setCardIds((prevCardIds) => prevCardIds.filter((id) => id !== index));
     };
 
     const outOfFrame = (name, idx) => {
@@ -38,6 +54,9 @@ const SwipeableAccommodationCard = ({ accommodations }) => {
         if (currentIndexRef.current >= idx) {
             childRefs[idx].current?.restoreCard();
         }
+
+        // Réinitialiser la vitesse d'animation
+        setAnimationSpeed(500);
     };
 
     const goBack = async () => {
@@ -49,7 +68,7 @@ const SwipeableAccommodationCard = ({ accommodations }) => {
 
     const swipe = async (dir) => {
         if (!canSwipe || !childRefs[currentIndex]) return;
-        if (currentIndex < accommodations.length) {
+        if (currentIndex < cardIds.length) {
             await childRefs[currentIndex].current?.swipe(dir);
         }
     };
@@ -57,22 +76,26 @@ const SwipeableAccommodationCard = ({ accommodations }) => {
     return (
         <div className="swipeable-accommodation-card-container">
             <div className="card-container">
-                {accommodations.map((accommodation, index) => (
-                    <TinderCard
-                        key={accommodation.id}
-                        ref={childRefs[index]}
-                        className="swipe"
-                        onSwipe={(dir) => swiped(dir, accommodation.name, index)}
-                        onCardLeftScreen={() => outOfFrame(accommodation.name, index)}
-                    >
-                        <div
-                            style={{ backgroundImage: `url(${accommodation.image})` }}
-                            className="card"
+                {cardIds.map((index) => {
+                    const accommodation = accommodations[index];
+                    return (
+                        <TinderCard
+                            key={accommodation.id}
+                            ref={childRefs[index]}
+                            className="swipe"
+                            onSwipe={(dir) => swiped(dir, accommodation.name, index)}
+                            onCardLeftScreen={() => outOfFrame(accommodation.name, index)}
+                            flickOnSwipe={false}
                         >
-                            <h3>{accommodation.name}</h3>
-                        </div>
-                    </TinderCard>
-                ))}
+                            <div
+                                style={{ backgroundImage: `url(${accommodation.image})` }}
+                                className="card"
+                            >
+                                <h3>{accommodation.name}</h3>
+                            </div>
+                        </TinderCard>
+                    );
+                })}
             </div>
             <div className="buttons">
                 <button
@@ -80,7 +103,7 @@ const SwipeableAccommodationCard = ({ accommodations }) => {
                     onClick={() => swipe('left')}
                     disabled={!canSwipe}
                 >
-                    Swipe left!
+                    <img src={skipIcon} alt="Skip" />
                 </button>
                 <button
                     style={{ backgroundColor: !canGoBack && '#c3c4d3' }}
@@ -94,7 +117,7 @@ const SwipeableAccommodationCard = ({ accommodations }) => {
                     onClick={() => swipe('right')}
                     disabled={!canSwipe}
                 >
-                    Swipe right!
+                    <img src={likeIcon} alt="Like" />
                 </button>
             </div>
             {lastDirection ? (
