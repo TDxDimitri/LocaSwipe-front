@@ -14,7 +14,7 @@ import WelcomePage from './pages/welcome/index';
 import Choice from './pages/choice/choice';
 import './App.css';
 import OwnerHomePage from './pages/owner/owner';
-import { TenantHomePage } from './pages/tenant/tenant';
+import { TenantHomePage } from './pages/tenant';
 
 function App() {
   return (

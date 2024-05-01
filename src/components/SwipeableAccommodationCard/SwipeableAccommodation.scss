@@ -1,31 +1,67 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .cardContainer {
-    position: relative;
-    height: 628px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .swipe {
+.swipeable-accommodation-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #B3CDE0;
+}
+
+.card-container {
+  position: relative;
+  z-index: 1; 
+  height: 500px;
+  width: 90vw;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-position: center;
+  background-size: cover;
+
+  h3 {
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    width: 346px;
+    bottom: 10px;
+    left: 10px;
+    margin: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
   }
-  
-  .buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons button {
+  margin: 0 5px;
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #9198e5;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f0f0f0;
   }
-  
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
