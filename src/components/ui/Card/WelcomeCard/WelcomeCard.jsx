@@ -4,7 +4,7 @@ import CheckboxCircle from '../../../../icons/checkbox-circle.svg';
 
 function WelcomeCard({ title, text }) {
     return (
-        <div className="card">
+        <div className="card-home">
             <div className="card-header">
                 <img src={CheckboxCircle} alt="Checkbox icon" className="checkbox-icon" />
                 <h2 className="card-title">{title}</h2>
