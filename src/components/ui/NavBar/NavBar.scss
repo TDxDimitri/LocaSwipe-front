@@ -1,0 +1,22 @@
+.navbar{
+    background-color: #002035;
+    border: 1px solid #002035;
+    border-radius: 0.5rem;
+    padding: 1em;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    .nav-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+    }
+    
+    .linkTxt{
+        color: white;
+        font-size: .7rem;
+        text-decoration: none !important;
+        margin: 0;
+    }
+}

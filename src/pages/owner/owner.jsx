@@ -1,13 +1,13 @@
 import React from 'react';
 import NavBar from '../../components/ui/NavBar/navBar';
 
-const TenantHomePage = () => {
+const OwnerHomePage = () => {
     return (
         <div>
-             < NavBar />
-            <h1>Bienvenue locataire</h1>
+            < NavBar />
+            <h1>Bienvenue propriétaire</h1>
         </div>
     );
 };
 
-export default TenantHomePage;
+export default OwnerHomePage;
