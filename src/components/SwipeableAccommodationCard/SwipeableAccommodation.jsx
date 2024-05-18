@@ -4,7 +4,7 @@ import './SwipeableAccommodation.scss';
 import likeIcon from '../../icons/like-icon.svg';
 import skipIcon from '../../icons/skip-icon.svg';
 
-const SwipeableAccommodationCard = ({ accommodations }) => {
+const SwipeableAccommodationCard = ({ accommodations, onLike }) => {
     const [currentIndex, setCurrentIndex] = useState(null);
     const [lastDirection, setLastDirection] = useState();
     const [cardIds, setCardIds] = useState(() => Array.from({ length: accommodations.length }, (_, i) => i));
@@ -33,13 +33,17 @@ const SwipeableAccommodationCard = ({ accommodations }) => {
     }, [accommodations]);
 
     const canGoBack = currentIndex < cardIds.length - 1;
-
     const canSwipe = currentIndex !== null && currentIndex >= 0;
 
-    const swiped = async (direction, nameToDelete, index) => {
+    const swiped = async (direction, accommodation, index) => {
         setLastDirection(direction);
         const newIndex = cardIds.findIndex((id) => id === index) - 1;
         updateCurrentIndex(newIndex);
+
+        // Si le swipe est à droite, appelez la fonction onLike
+        if (direction === 'right') {
+            onLike(accommodation.id); // Call the like function
+        }
 
         // Définir la vitesse d'animation
         setAnimationSpeed(100);
@@ -83,7 +87,7 @@ const SwipeableAccommodationCard = ({ accommodations }) => {
                             key={accommodation.id}
                             ref={childRefs[index]}
                             className="swipe"
-                            onSwipe={(dir) => swiped(dir, accommodation.name, index)}
+                            onSwipe={(dir) => swiped(dir, accommodation, index)}
                             onCardLeftScreen={() => outOfFrame(accommodation.name, index)}
                             flickOnSwipe={false}
                         >
