@@ -9,43 +9,78 @@
 
 .card-container {
   position: relative;
-  z-index: 1; 
+  z-index: 1;
   height: 500px;
   width: 90vw;
   max-width: 400px;
   margin-bottom: 20px;
 }
 
-.card {
+.card-swipe {
   position: absolute;
   top: 0;
   left: 0;
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 550px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-position: center;
   background-size: cover;
 
-  h3 {
+  .card-content {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-    margin: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
     color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+
+    .description {
+      top: 50%;
+      left: 10px;
+      right: 10px;
+      transform: translateY(-50%);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.2em;
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 0.9em;
+    }
+
+    .more-info-button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+    }
   }
 }
 
-.buttons {
+.buttons-like {
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 }
 
-.buttons button {
+.buttons-like button {
   margin: 0 5px;
   padding: 10px 20px;
   background: none;
