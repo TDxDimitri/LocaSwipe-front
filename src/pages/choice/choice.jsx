@@ -6,13 +6,15 @@ import './ChoicePage.scss';
 const ChoicePage = () => {
     const navigate = useNavigate();
 
-    const goToFormTenant = () => navigate('/tenant');
-    const goToFormLandlord = () => navigate('/landlord');
+    const goToForm = (role) => {
+        navigate('/signup', { state: { role } });
+    };
+
     return (
         <div className="choice-page">
             <h1 className='choice-title'>Choisissez</h1>
-            <ChoiceCard text="Locataire" onClick={goToFormTenant} />      
-            <ChoiceCard text="Propriétaire" onClick={goToFormLandlord} className="choice-card" />
+            <ChoiceCard text="Locataire" onClick={() => goToForm('Tenant')} />      
+            <ChoiceCard text="Propriétaire" onClick={() => goToForm('Owner')} className="choice-card" />
         </div>
     );
 };

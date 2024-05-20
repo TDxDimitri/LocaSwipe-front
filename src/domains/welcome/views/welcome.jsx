@@ -9,7 +9,7 @@ function WelcomeDomain() {
     const navigate = useNavigate();
 
     const handleInscriptionClick = () => navigate('/choice');
-    const handleConnexionClick = () => navigate('/choice');
+    const handleConnexionClick = () => navigate('/login');
 
     return (
         <div className="welcome-container">

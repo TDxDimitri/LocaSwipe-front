@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function SignUpForm() {
+  const location = useLocation();
+  const roleFromState = location.state?.role || '';
+
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
     email: '',
     password: '',
-    roleType: ''
+    roleType: roleFromState
   });
 
   const handleChange = (e) => {
@@ -17,7 +21,7 @@ function SignUpForm() {
     e.preventDefault();
     
     try {
-      const response = await fetch('/auth/register', {
+      const response = await fetch('/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -71,11 +75,12 @@ function SignUpForm() {
         onChange={handleChange}
         required
       />
-      <select name="roleType" value={formData.roleType} onChange={handleChange} required>
-        <option value="">Sélectionner un rôle</option>
-        <option value="admin">Administrateur</option>
-        <option value="user">Utilisateur</option>
-      </select>
+      <input
+        type="hidden"
+        name="roleType"
+        value={formData.roleType}
+      />
+
       <button type="submit">S'inscrire</button>
     </form>
   );
