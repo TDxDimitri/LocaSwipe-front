@@ -27,6 +27,23 @@ function App() {
           <Route path="/choice" element={<Choice />} />
           <Route path="/signup" element={<SignUpForm />} />
           {/* autres routes... */}
+          {/* routes protégées avec AuthenticatedRoute */}
+          <Route
+            path="/owner"
+            element={
+              <AuthenticatedRoute allowedRoles={['owner']}>
+                <OwnerHomePage />
+              </AuthenticatedRoute>
+            }
+          />
+          <Route
+            path="/tenant"
+            element={
+              <AuthenticatedRoute allowedRoles={['tenant']}>
+                <TenantHomePage />
+              </AuthenticatedRoute>
+            }
+          />
         </Routes>
       </Router>
     </AuthProvider>
