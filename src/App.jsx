@@ -13,9 +13,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import WelcomePage from './pages/welcome/index';
 import Choice from './pages/choice/choice';
 import './App.css';
-import SignUpForm from './pages/tenant/tenant';
 import OwnerHomePage from './pages/owner/owner';
 import { TenantHomePage } from './pages/tenant';
+import SignUpForm from './pages/signup/signUpForm.jsx';
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<WelcomePage />} />
           <Route path="/choice" element={<Choice />} />
+          <Route path="/signup" element={<SignUpForm />} />
           {/* autres routes... */}
         </Routes>
       </Router>
