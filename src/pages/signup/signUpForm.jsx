@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { REGISTER_URL } from '../../config/ApiUrls';
 
 function SignUpForm() {
   const location = useLocation();
@@ -21,7 +22,7 @@ function SignUpForm() {
     e.preventDefault();
     
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch( REGISTER_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
