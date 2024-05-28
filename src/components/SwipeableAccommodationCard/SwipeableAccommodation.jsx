@@ -120,12 +120,6 @@ const SwipeableAccommodationCard = ({ accommodations, onLike }) => {
                     <img src={skipIcon} alt="Skip" />
                 </button>
                 <button
-                    style={{ backgroundColor: !canGoBack && '#c3c4d3' }}
-                    onClick={() => goBack()}
-                    disabled={!canGoBack}
-                >
-                </button>
-                <button
                     style={{ backgroundColor: !canSwipe && '#c3c4d3' }}
                     onClick={() => swipe('right')}
                     disabled={!canSwipe}
