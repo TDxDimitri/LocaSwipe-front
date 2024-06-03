@@ -14,11 +14,15 @@ export const useLogin = () => {
         try {
             setError(null);
             const response: AuthResponse = await ApiLogin(email, password);
-            login(response.token, response.role);
-            if (response.role === 'tenant') {
-                navigate('/tenant');
-            } else if (response.role === 'owner') {
-                navigate('/owner');
+            if (response && response.token && response.role && response.id !== undefined) {
+                login(response.token, response.role, response.id);
+                if (response.role === 'tenant') {
+                    navigate('/tenant');
+                } else if (response.role === 'owner') {
+                    navigate('/owner');
+                }
+            } else {
+                throw new Error('Invalid response from API');
             }
         } catch (error: any) {
             setError(error.message);
