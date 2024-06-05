@@ -7,8 +7,11 @@ export const ApiLogin = async (email: string, password: string): Promise<AuthRes
     const response = await axios.post<AuthResponse>(LOGIN_URL, { email, password });
     return response.data;
   } catch (error) {
-    const message = (error.response && error.response.data && error.response.data.message) as string;
-    throw new Error(message);
+    if (axios.isAxiosError(error) && error.response) {
+      const message = (error.response.data && error.response.data.message) as string;
+      throw new Error(message);
+    } else {
+      throw new Error('An unknown error occurred');
+    }
   }
 };
-
