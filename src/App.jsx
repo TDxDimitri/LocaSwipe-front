@@ -17,6 +17,7 @@ import OwnerHomePage from './pages/owner/index.jsx';
 import { TenantHomePage } from './pages/tenant';
 import SignUpForm from './pages/signup/signUpForm.jsx';
 import MessagingPage from './pages/Messaging/index.jsx';
+import ConversationDetail from './domains/Messaging/views/Details/ConversationDetails.jsx';
 
 function App() {
   return (
@@ -59,6 +60,22 @@ function App() {
             element={
               <AuthenticatedRoute allowedRoles={['tenant']}>
                 <MessagingPage />
+              </AuthenticatedRoute>
+            }
+          />
+          <Route
+            path="/owner/messages/:conversationId"
+            element={
+              <AuthenticatedRoute allowedRoles={['owner']}>
+                <ConversationDetail />
+              </AuthenticatedRoute>
+            }
+          />
+          <Route
+            path="/tenant/messages/:conversationId"
+            element={
+              <AuthenticatedRoute allowedRoles={['tenant']}>
+                <ConversationDetail />
               </AuthenticatedRoute>
             }
           />
