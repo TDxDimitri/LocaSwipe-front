@@ -5,7 +5,11 @@ import messageIcon from '../../../assets/messages.svg';
 import profileIcon from '../../../assets/profil.svg';
 import notifIcon from '../../../assets/notifs.svg';
 
-const NavBar = ({ userRole }) => {
+interface NavBarProps {
+  userRole: string | null;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ userRole }) => {
   const getMessageRoute = () => {
     if (userRole === 'owner') {
       return '/owner/messages';
@@ -15,6 +19,7 @@ const NavBar = ({ userRole }) => {
     }
     return '/';
   };
+
   const getHomeRoute = () => {
     if (userRole === 'owner') {
       return '/owner';

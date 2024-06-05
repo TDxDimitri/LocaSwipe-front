@@ -13,12 +13,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import WelcomePage from './pages/welcome/index';
 import Choice from './pages/choice/choice';
 import './App.css';
-import OwnerHomePage from './pages/owner/index.jsx';
+import OwnerHomePage from './pages/owner/index.tsx';
 import { TenantHomePage } from './pages/tenant';
 import SignUpForm from './pages/signup/signUpForm.jsx';
 import MessagingPage from './pages/Messaging/index.jsx';
 import ConversationDetail from './domains/Messaging/views/Details/ConversationDetails.jsx';
-
+import LikedUsers from './domains/Owner/views/LikedUsers/LikedUsers';
 function App() {
   return (
     <AuthProvider>
@@ -76,6 +76,15 @@ function App() {
             element={
               <AuthenticatedRoute allowedRoles={['tenant']}>
                 <ConversationDetail />
+              </AuthenticatedRoute>
+            }
+          />
+          {/* route pour afficher les utilisateurs ayant aimé une propriété */}
+          <Route
+            path="/accommodations/:accommodationId/likes"
+            element={
+              <AuthenticatedRoute allowedRoles={['owner']}>
+                <LikedUsers />
               </AuthenticatedRoute>
             }
           />

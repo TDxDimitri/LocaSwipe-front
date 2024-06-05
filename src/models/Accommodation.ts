@@ -9,4 +9,5 @@ export interface Accommodation {
   surface_area: number;
   description: string; 
   property_type: string; 
+  likes_count: number;
 }
