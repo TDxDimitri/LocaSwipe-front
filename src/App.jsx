@@ -13,9 +13,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import WelcomePage from './pages/welcome/index';
 import Choice from './pages/choice/choice';
 import './App.css';
-import OwnerHomePage from './pages/owner/owner';
+import OwnerHomePage from './pages/owner/index.jsx';
 import { TenantHomePage } from './pages/tenant';
 import SignUpForm from './pages/signup/signUpForm.jsx';
+import MessagingPage from './pages/Messaging/index.jsx';
+import ConversationDetail from './domains/Messaging/views/Details/ConversationDetails.jsx';
 
 function App() {
   return (
@@ -41,6 +43,39 @@ function App() {
             element={
               <AuthenticatedRoute allowedRoles={['tenant']}>
                 <TenantHomePage />
+              </AuthenticatedRoute>
+            }
+          />
+          {/* routes de messagerie */}
+          <Route
+            path="/owner/messages"
+            element={
+              <AuthenticatedRoute allowedRoles={['owner']}>
+                <MessagingPage />
+              </AuthenticatedRoute>
+            }
+          />
+          <Route
+            path="/tenant/messages"
+            element={
+              <AuthenticatedRoute allowedRoles={['tenant']}>
+                <MessagingPage />
+              </AuthenticatedRoute>
+            }
+          />
+          <Route
+            path="/owner/messages/:conversationId"
+            element={
+              <AuthenticatedRoute allowedRoles={['owner']}>
+                <ConversationDetail />
+              </AuthenticatedRoute>
+            }
+          />
+          <Route
+            path="/tenant/messages/:conversationId"
+            element={
+              <AuthenticatedRoute allowedRoles={['tenant']}>
+                <ConversationDetail />
               </AuthenticatedRoute>
             }
           />
