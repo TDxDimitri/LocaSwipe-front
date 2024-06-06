@@ -1,0 +1,16 @@
+.owner-accommodations {
+    background-color:#EEEEFD;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.accommodations-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width: 100%;
+    gap: 24px; 
+}

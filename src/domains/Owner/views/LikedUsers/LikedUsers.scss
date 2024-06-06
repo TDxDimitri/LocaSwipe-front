@@ -1,0 +1,20 @@
+.full-page-bg {
+    min-height: 100vh;
+    background-color: #EEEEFD;
+}
+
+.liked-users {
+    padding: 20px;
+    
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    h1 {
+        margin-top: 20px;
+        font-size: 24px;
+        color: #002035;
+    }
+}
