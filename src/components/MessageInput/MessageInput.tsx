@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import io from 'socket.io-client';
+import { BASE_URL } from '../../config/ApiUrls';
 
-const socket = io('http://localhost:3000'); // Assurez-vous que l'URL est correcte
+const socket = io(BASE_URL); // Assurez-vous que l'URL est correcte
 
 interface MessageInputProps {
     conversationId: number;

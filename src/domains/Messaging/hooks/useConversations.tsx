@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { GET_CONVERSATIONS_URL } from '../../../config/ApiUrls';
 import axios from 'axios';
 import { Conversation } from '../../../models/Conversation';
+import { BASE_URL } from '../../../config/ApiUrls';
+
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3000'); // URL du serveur Node.js
+const socket = io(BASE_URL);
 
 const useConversations = (userId: number) => {
   const [conversations, setConversations] = useState<Conversation[]>([]);

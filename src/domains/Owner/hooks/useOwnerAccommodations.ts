@@ -2,12 +2,14 @@ import { useState, useEffect, useCallback } from 'react';
 import { io } from 'socket.io-client';
 import { Accommodation } from '../../../models/Accommodation';
 import { getOwnerAccommodations } from '../utils/OwnerApi';
+import { BASE_URL } from '../../../config/ApiUrls';
 
 export const useOwnerAccommodations = (userId: number) => {
   const [accommodations, setAccommodations] = useState<Accommodation[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const socket = io('http://localhost:3000');
+const socket = io(BASE_URL);
+
 
   useEffect(() => {
     const fetchAccommodations = async () => {

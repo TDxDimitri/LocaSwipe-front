@@ -3,8 +3,10 @@ import { getMessages } from '../utils/messagingApi';
 import { AuthContext, AuthContextProps } from '../../AuthenticatedRoute/contexts/AuthContext';
 import { Message } from '../../../models/Message';
 import io from 'socket.io-client';
+import { BASE_URL } from '../../../config/ApiUrls';
 
-const socket = io('http://localhost:3000');
+const socket = io(BASE_URL);
+
 
 export const useMessages = (conversationId: number) => {
     const [messages, setMessages] = useState<Message[]>([]);
