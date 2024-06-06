@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import io from 'socket.io-client';
-import { BASE_URL } from '../../config/ApiUrls';
-
-const socket = io(BASE_URL); // Assurez-vous que l'URL est correcte
+import { useSocket } from '../../config/context/SocketContext';
 
 interface MessageInputProps {
     conversationId: number;
@@ -11,6 +8,7 @@ interface MessageInputProps {
 
 const MessageInput: React.FC<MessageInputProps> = ({ conversationId, userId }) => {
     const [content, setContent] = useState('');
+    const socket = useSocket(); // Utiliser la connexion Socket.IO du contexte
 
     const sendMessage = () => {
         if (content.trim() === '') return;

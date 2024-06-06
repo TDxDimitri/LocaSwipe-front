@@ -2,16 +2,13 @@ import { useState, useEffect } from 'react';
 import { GET_CONVERSATIONS_URL } from '../../../config/ApiUrls';
 import axios from 'axios';
 import { Conversation } from '../../../models/Conversation';
-import { BASE_URL } from '../../../config/ApiUrls';
-
-import io from 'socket.io-client';
-
-const socket = io(BASE_URL);
+import { useSocket } from '../../../config/context/SocketContext';
 
 const useConversations = (userId: number) => {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
+  const socket = useSocket(); // Utiliser la connexion Socket.IO du contexte
 
   useEffect(() => {
     const fetchConversations = async () => {
@@ -46,7 +43,7 @@ const useConversations = (userId: number) => {
     return () => {
       socket.off('newMessage');
     };
-  }, [userId]);
+  }, [userId, socket]);
 
   return { conversations, loading, error };
 };

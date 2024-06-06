@@ -2,17 +2,14 @@ import { useState, useEffect, useContext } from 'react';
 import { getMessages } from '../utils/messagingApi';
 import { AuthContext, AuthContextProps } from '../../AuthenticatedRoute/contexts/AuthContext';
 import { Message } from '../../../models/Message';
-import io from 'socket.io-client';
-import { BASE_URL } from '../../../config/ApiUrls';
-
-const socket = io(BASE_URL);
-
+import { useSocket } from '../../../config/context/SocketContext';
 
 export const useMessages = (conversationId: number) => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<Error | null>(null);
     const authContext = useContext(AuthContext) as AuthContextProps;
+    const socket = useSocket(); // Utiliser la connexion Socket.IO du contexte
 
     useEffect(() => {
         const fetchData = async () => {
@@ -42,7 +39,7 @@ export const useMessages = (conversationId: number) => {
         return () => {
             socket.off('newMessage');
         };
-    }, [conversationId, authContext]);
+    }, [conversationId, authContext, socket]);
 
     return {
         messages,
