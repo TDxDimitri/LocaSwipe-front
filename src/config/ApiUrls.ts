@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://207.154.192.137:3000";
+// const LOCAL_URL = "http://localhost:3000";
 
 export const LOGIN_URL = `${BASE_URL}/api/auth/login`;
 export const REGISTER_URL = `${BASE_URL}/api/auth/register`;
