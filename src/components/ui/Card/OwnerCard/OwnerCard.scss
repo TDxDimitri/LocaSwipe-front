@@ -1,0 +1,95 @@
+.owner-card {
+    width: 344px;
+    height: 348px;
+    background-color: white;
+    border: 1px solid #E0E6ED;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    box-sizing: border-box;
+    border-radius: 11px;
+
+    &__image {
+        width: 312px;
+        height: 104px;
+        object-fit: cover;
+        margin-bottom: 16px;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    &__header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #5956E9;
+        margin: 0;
+    }
+
+    &__edit-icon {
+        height: 50px;
+        cursor: pointer;
+    }
+
+    &__location,
+    &__price,
+    &__likes {
+        font-size: 12px;
+        font-weight: 400;
+        color: #002035;
+        margin: 4px 0;
+    }
+
+    &__separator {
+        width: 100%;
+        height: 1px;
+        background-color: #E0E6ED;
+        margin: 8px 0;
+    }
+
+    &__likes-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__view-likes-button {
+        width: 142px;
+        height: 46px;
+        padding: 8px 20px;
+        gap: 12px;
+        border-radius: 4px;
+        background-color: #5491B9;
+        color: #FFF;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        &:hover {
+            background-color: #457b98;
+        }
+
+        &:active {
+            background-color: #3a6780;
+        }
+    }
+}

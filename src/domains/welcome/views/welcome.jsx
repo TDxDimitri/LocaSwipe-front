@@ -1,4 +1,3 @@
-// Welcome.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Welcome.scss';
@@ -9,7 +8,7 @@ function WelcomeDomain() {
     const navigate = useNavigate();
 
     const handleInscriptionClick = () => navigate('/choice');
-    const handleConnexionClick = () => navigate('/choice');
+    const handleConnexionClick = () => navigate('/login');
 
     return (
         <div className="welcome-container">

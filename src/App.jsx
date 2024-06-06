@@ -13,9 +13,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import WelcomePage from './pages/welcome/index';
 import Choice from './pages/choice/choice';
 import './App.css';
-import OwnerHomePage from './pages/owner/owner';
+import OwnerHomePage from './pages/owner/index.tsx';
 import { TenantHomePage } from './pages/tenant';
-
+import SignUpForm from './pages/signup/signUpForm.jsx';
+import MessagingPage from './pages/Messaging/index.jsx';
+import ConversationDetail from './domains/Messaging/views/Details/ConversationDetails.jsx';
+import LikedUsers from './domains/Owner/views/LikedUsers/LikedUsers';
 function App() {
   return (
     <AuthProvider>
@@ -24,7 +27,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<WelcomePage />} />
           <Route path="/choice" element={<Choice />} />
-
+          <Route path="/signup" element={<SignUpForm />} />
+          {/* autres routes... */}
           {/* routes protégées avec AuthenticatedRoute */}
           <Route
             path="/owner"
@@ -39,6 +43,48 @@ function App() {
             element={
               <AuthenticatedRoute allowedRoles={['tenant']}>
                 <TenantHomePage />
+              </AuthenticatedRoute>
+            }
+          />
+          {/* routes de messagerie */}
+          <Route
+            path="/owner/messages"
+            element={
+              <AuthenticatedRoute allowedRoles={['owner']}>
+                <MessagingPage />
+              </AuthenticatedRoute>
+            }
+          />
+          <Route
+            path="/tenant/messages"
+            element={
+              <AuthenticatedRoute allowedRoles={['tenant']}>
+                <MessagingPage />
+              </AuthenticatedRoute>
+            }
+          />
+          <Route
+            path="/owner/messages/:conversationId"
+            element={
+              <AuthenticatedRoute allowedRoles={['owner']}>
+                <ConversationDetail />
+              </AuthenticatedRoute>
+            }
+          />
+          <Route
+            path="/tenant/messages/:conversationId"
+            element={
+              <AuthenticatedRoute allowedRoles={['tenant']}>
+                <ConversationDetail />
+              </AuthenticatedRoute>
+            }
+          />
+          {/* route pour afficher les utilisateurs ayant aimé une propriété */}
+          <Route
+            path="/accommodations/:accommodationId/likes"
+            element={
+              <AuthenticatedRoute allowedRoles={['owner']}>
+                <LikedUsers />
               </AuthenticatedRoute>
             }
           />

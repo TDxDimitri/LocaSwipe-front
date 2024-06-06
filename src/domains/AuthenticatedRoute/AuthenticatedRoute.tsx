@@ -17,8 +17,9 @@ const AuthenticatedRoute = ({ children, allowedRoles }: Props) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         const role = localStorage.getItem('role');
-        if (token && role) {
-            authContext.login(token, role as UserRole);
+        const userId = localStorage.getItem('userId');
+        if (token && role && userId) {
+            authContext.login(token, role as UserRole, parseInt(userId));
             if (role !== null) {
                 setUserRole(role as UserRole);
             }
@@ -38,7 +39,6 @@ const AuthenticatedRoute = ({ children, allowedRoles }: Props) => {
         return children;
     }
 
-    // Afficher un message d'erreur ou rediriger vers une page d'erreur appropriée
     return (
         <div>
             <h1>Accès refusé</h1>
