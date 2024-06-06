@@ -12,12 +12,12 @@ const OwnerAccommodations: React.FC<OwnerAccommodationsProps> = ({ userId }) => 
     const { accommodations, loading, error } = useOwnerAccommodations(userId);
     const navigate = useNavigate();
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
-
     const handleViewLikes = (accommodationId: number) => {
         navigate(`/accommodations/${accommodationId}/likes`);
     };
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;
 
     return (
         <div className="owner-accommodations">
