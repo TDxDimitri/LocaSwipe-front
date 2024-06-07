@@ -10,14 +10,20 @@ function WelcomeDomain() {
     const handleInscriptionClick = () => navigate('/choice');
     const handleConnexionClick = () => navigate('/login');
 
+    const cardContents = [
+        { title: "PROFILS VÉRIFIÉS", text: "Pour une recherche plus sécurisée" },
+        { title: "GESTION LOCATIVE", text: "Retrouver tous vos documents administratifs sur notre plateforme" },
+        { title: "INTERFACE INTUITIVE", text: "Swipez pour trouvez le bien ou le locataire idéal" },
+    ];
+
     return (
         <div className="welcome-container">
-            <h1 className="welcome-title">ABOUT OUR APP</h1>
+            <h1 className="welcome-title">À PROPOS DE L'APP</h1>
             <p className="welcome-text">
-                Nous sommes ravis de vous voir explorer notre application. Profitez de votre visite.
+                Notre mission ? Mettre en relation des propriétaires et des locataires sur une plateforme sécurisée pour une location sans prise de tête et une gestion locative clé en main !
             </p>
-            {[1, 2, 3].map((arg) => (
-                <WelcomeCard key={arg} title={`ARGUMENT ${arg}`} text="Ceci est un texte d'exemple à l'intérieur de la card." />
+            {cardContents.map((content, index) => (
+                <WelcomeCard key={index} title={content.title} text={content.text} />
             ))}
             <div className="buttons-container">
                 <ButtonAuth text="Inscription" position="left" onClick={handleInscriptionClick} />

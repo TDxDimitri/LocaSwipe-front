@@ -10,7 +10,6 @@ export const TenantHomePage = () => {
         <>
             <div>
                 <NavBar userRole={userRole} />
-                <h1>Bienvenue locataire</h1>
             </div>
             <TenantDomain />
         </>

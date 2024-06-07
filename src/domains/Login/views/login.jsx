@@ -1,49 +1,60 @@
 import React, { useState } from 'react';
 import './login.scss';
-import { PrimaryButton } from '../../../components/ui/Button/Button';
 import { useLogin } from '../hooks/useLogin';
+import gBlueIcon from '../../../assets/g-blue-icon.svg';
+import { useNavigate } from 'react-router-dom';
 
 const LoginDomain = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { loginApi, error } = useLogin();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await loginApi(email, password);
   };
 
+  const handleSignupRedirect = () => {
+    navigate('/choice');
+  };
+
   return (
-    <div style={{ backgroundColor: '#f0f0f0' }}>
-      <div className='customModal p-5'>
-        <h1 className='white'>Connexion</h1>
-        {error && <p className='white'>{error}</p>}
-        <form className='d-flex white flex-column p-1' onSubmit={handleSubmit}>
-          <label className='white' htmlFor="email">Adresse e-mail</label>
-          <input className='pb-1 white cstmInput'
+    <div className="login-page">
+      <div className="customModal">
+        <h1 className="title">Connexion</h1>
+        {error && <p className="error">{error}</p>}
+        <form className="login-form" onSubmit={handleSubmit}>
+          <label htmlFor="email" className="login-label">E-MAIL*</label>
+          <input
+            className="login-input"
             type="email"
             id="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             required
           />
-          <label className='white' htmlFor="password">Mot de passe</label>
+          <label htmlFor="password" className="login-label">MDP*</label>
           <input
-            className='mb-5 pb-1 white cstmInput'
+            className="login-input"
             type="password"
             id="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             required
           />
-          <div>
-            <PrimaryButton text='Connexion' buttonStyle={'connect'} type='submit' />
-          </div>
-
-          <div>
-            <PrimaryButton text='inscription' buttonStyle={'secondary'} />
-          </div>
+          <button className="login-button" type="submit">CONNEXION</button>
         </form>
+
+        <button className="google-login-button" type="button">
+          <img src={gBlueIcon} alt="Google icon" className="google-icon" />
+          Connexion avec Google
+        </button>
+
+        <div className="signup-prompt">
+          <p>Pas de compte?</p>
+          <p className="signup-link" onClick={handleSignupRedirect}>Inscrivez-vous ici !</p>
+        </div>
       </div>
     </div>
   );

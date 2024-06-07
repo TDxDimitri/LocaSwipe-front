@@ -1,12 +1,27 @@
 .choice-card {
-    width: 216px;
-    height: 216px;
-    border-radius: 8px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: 400;
+  width: 216px;
+  height: 216px;
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  flex-direction: column; // Alignement vertical
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 10px;
+  transition: background-color 0.3s;
+
+  &:hover {
+      background-color: #f0f0f0;
   }
-  
+
+  .choice-card-icon {
+      margin-bottom: 10px; 
+  }
+
+  .choice-card-text {
+      text-align: center;
+  }
+}

@@ -1,17 +1,23 @@
 .choice-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  
-    .choice-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #002944;
+  height: 100vh; 
+
+  .choice-title {
       font-size: 36px;
       font-weight: bold;
       color: white;
-    }
-  
-    .choice-card {
-      margin-top: 30px;
-    }
   }
-  
+
+  .choice-card-tenant {
+      margin-top: 30px;
+      color:#005B96;
+  }
+  .choice-card-owner {
+    margin-top: 30px;
+    color:#5956E9;
+}
+}

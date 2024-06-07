@@ -1,22 +1,105 @@
-.customModal {
-    position: fixed;
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Aligner les éléments en bas */
+    height: 100vh;
+    background-color: #1F1E52;
+    margin: 0; /* S'assurer qu'il n'y a pas de marge */
+    padding: 0; /* S'assurer qu'il n'y a pas de padding */
+  }
+  
+  .customModal {
+    width: 390px;
+    height: 687px;
+    padding: 2rem;
+    border-radius: 60px 0px 0px 0px;
     background-color: white;
-    bottom: 0;
-    height: 80vh;
-    width: 100vw;
-    border: 1px solid #000000;
-    border-top-left-radius: 3rem;
-}
-.white {
-    background-color: white;
-}
-
-// * {
-//     background-color: #00263F;
-// }
-.cstmInput {
-    padding: '10px 20px';
-    border: '1px solid #00263F';
-    border-radius: '10px';
-    cursor: 'pointer';
-}
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0; /* S'assurer qu'il n'y a pas de marge en bas */
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #1F1E52;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .login-label {
+    align-self: flex-start;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #1F1E52;
+  }
+  
+  .login-input {
+    width: 324px;
+    height: 48px;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid #1F1E52;
+    box-sizing: border-box;
+  }
+  
+  .login-button {
+    width: 324px;
+    height: 46px;
+    padding: 8px 24px;
+    margin-top: 1rem;
+    border-radius: 4px;
+    border: none;
+    background-color: #002035;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .google-login-button {
+    width: 324px;
+    height: 48px;
+    padding: 12px;
+    margin-top: 1rem;
+    border-radius: 4px;
+    border: 1px solid #1F1E52;
+    background-color: #fff;
+    color: #1F1E52;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .google-icon {
+    margin-right: 8px;
+  }
+  
+  .signup-prompt {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #1F1E52;
+  }
+  
+  .signup-link {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #1F1E52;
+  }
+  

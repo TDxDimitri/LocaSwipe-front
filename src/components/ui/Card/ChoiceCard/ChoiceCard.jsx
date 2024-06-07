@@ -1,10 +1,11 @@
 import React from 'react';
 import './ChoiceCard.scss';
 
-const ChoiceCard = ({ text, onClick, className }) => {
+const ChoiceCard = ({ text, onClick, className, icon }) => {
     return (
         <div className={`choice-card ${className}`} onClick={onClick}>
-            {text}
+            <img src={icon} alt="icon" className="choice-card-icon" />
+            <span className="choice-card-text">{text}</span>
         </div>
     );
 };
