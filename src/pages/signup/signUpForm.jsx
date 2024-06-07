@@ -53,7 +53,7 @@ function SignUpForm() {
   };
 
   const handleLoginRedirect = () => {
-    navigate('/login'); // Rediriger vers la page de connexion
+    navigate('/login');
   };
 
   return (
