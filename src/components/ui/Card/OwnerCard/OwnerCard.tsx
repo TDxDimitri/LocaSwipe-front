@@ -14,7 +14,7 @@ const OwnerCard: React.FC<OwnerCardProps> = ({ accommodation, onViewLikes }) => 
             <img src={accommodation.image} alt={accommodation.description} className="owner-card__image" />
             <div className="owner-card__body">
                 <div className="owner-card__header">
-                    <h5 className="owner-card__title">{accommodation.adress}</h5>
+                    <h5 className="owner-card__title">{accommodation.address}</h5>
                     <img src={editIcon} alt="Edit" className="owner-card__edit-icon" />
                 </div>
                 <p className="owner-card__location">{accommodation.city} - {accommodation.surface_area} m²</p>

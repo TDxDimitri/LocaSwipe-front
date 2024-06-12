@@ -97,7 +97,7 @@ const SwipeableAccommodationCard = ({ accommodations, onLike }) => {
                             <div className="card-swipe" style={{ backgroundImage: `url(${accommodation.image})` }}>
                                 <div className="card-content">
                                     {showDescription[index] && <p className="description">{accommodation.description}</p>}
-                                    <h3>{accommodation.adress}</h3>
+                                    <h3>{accommodation.address}</h3>
                                     <p>{accommodation.city}</p>
                                     <p>Loyer HC: {accommodation.rent} €</p>
                                     <p>Type: {accommodation.property_type}</p>
