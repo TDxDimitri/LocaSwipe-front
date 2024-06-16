@@ -1,0 +1,44 @@
+.message-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 10px;
+
+    .messages {
+        flex: 1;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .message {
+        max-width: 60%;
+        padding: 10px;
+        border-radius: 16px;
+        font-size: 14px;
+        font-weight: 700;
+
+        &.sent {
+            align-self: flex-end;
+            background-color: #ffffff;
+            color: #5956E9;
+            border-top-right-radius: 16px;
+            border-top-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+
+        &.received {
+            align-self: flex-start;
+            background-color: #7E7DD0;
+            color: #ffffff;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            border-bottom-left-radius: 16px;
+        }
+    }
+}
