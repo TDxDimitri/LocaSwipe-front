@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useMessages } from '../../domains/Messaging/hooks/useMessages';
 import MessageInput from '../MessageInput/MessageInput';
 import { Message } from '../../models/Message';
@@ -6,6 +6,17 @@ import './Conversation.scss';
 
 const Conversation: React.FC<{ userId: number, conversationId: number }> = ({ userId, conversationId }) => {
     const { messages, loading, error } = useMessages(conversationId);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    const scrollToBottom = () => {
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
@@ -25,6 +36,7 @@ const Conversation: React.FC<{ userId: number, conversationId: number }> = ({ us
                         </div>
                     </li>
                 ))}
+                <div ref={messagesEndRef} />
             </ul>
             <MessageInput conversationId={conversationId} userId={userId} />
         </div>
