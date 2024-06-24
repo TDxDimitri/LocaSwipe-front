@@ -6,6 +6,7 @@ interface Conversation {
     user2_id: number;
     user1_name: string;
     user1_avatar: string;
+    user2_avatar: string;
     user2_name: string;
     last_message: string;
 }
@@ -25,7 +26,7 @@ const ConversationList = ({ conversations, userId, onConversationSelect }: Conve
                 {conversations.map((conversation) => (
                     <li key={conversation.id} className="conversation-item">
                         <div onClick={() => onConversationSelect(conversation.id)} style={{ cursor: 'pointer' }}>
-                            <img src={conversation.user1_avatar} alt="Profile" className="profile-pic" />
+                            <img src={conversation.user2_avatar} alt="Profile" className="profile-pic" />
                             <div className="conversation-details">
                                 <div className="conversation-name">
                                     {conversation.user1_id === userId ? conversation.user2_name : conversation.user1_name}
