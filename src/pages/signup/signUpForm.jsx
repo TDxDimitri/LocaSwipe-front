@@ -41,7 +41,8 @@ function SignUpForm() {
       });
 
       if (response.ok) {
-        // Inscription réussie, rediriger ou afficher un message de confirmation
+        // Inscription réussie, rediriger vers la page de connexion
+        navigate('/login');
       } else {
         // Gérer les erreurs de l'API
         const data = await response.json();
