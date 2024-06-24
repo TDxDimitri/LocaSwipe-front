@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://api.locaswipe.fr:3000/";
 // const LOCAL_URL = "http://localhost:3000";
 // https://api.locaswipe.fr:3000/
 
