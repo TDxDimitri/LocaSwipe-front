@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
+import axiosInstance from '../../../config/AxiosConfig';
 import { GET_CONVERSATIONS_URL } from '../../../config/ApiUrls';
-import axios from 'axios';
 import { Conversation } from '../../../models/Conversation';
 import { useSocket } from '../../../config/context/SocketContext';
 
@@ -13,7 +13,7 @@ const useConversations = (userId: number) => {
   useEffect(() => {
     const fetchConversations = async () => {
       try {
-        const response = await axios.get(GET_CONVERSATIONS_URL(userId));
+        const response = await axiosInstance.get(GET_CONVERSATIONS_URL(userId));
         setConversations(response.data);
         console.log('Conversations initiales:', response.data); // Journal de débogage
       } catch (err) {
