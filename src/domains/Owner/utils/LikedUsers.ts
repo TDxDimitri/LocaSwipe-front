@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../../../config/AxiosConfig';
 import { USER_LIKES_URL, ACCEPT_TENANT_URL } from '../../../config/ApiUrls';
 
 interface User {
@@ -11,7 +11,7 @@ interface User {
 
 export const getUsersWhoLikedAccommodation = async (accommodationId: number): Promise<User[]> => {
     try {
-        const response = await axios.get(USER_LIKES_URL(accommodationId));
+        const response = await axiosInstance.get(USER_LIKES_URL(accommodationId));
         return response.data;
     } catch (error) {
         console.error('Erreur lors de la récupération des utilisateurs ayant aimé la propriété:', error);
@@ -21,7 +21,7 @@ export const getUsersWhoLikedAccommodation = async (accommodationId: number): Pr
 
 export const acceptTenant = async (ownerId: number, tenantId: number, accommodationId: number): Promise<void> => {
     try {
-        const response = await axios.post(ACCEPT_TENANT_URL, {
+        const response = await axiosInstance.post(ACCEPT_TENANT_URL, {
             ownerId,
             tenantId,
             accommodationId

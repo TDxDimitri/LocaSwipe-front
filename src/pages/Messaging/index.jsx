@@ -4,7 +4,7 @@ import NavBar from '../../components/ui/NavBar/NavBar';
 import { AuthContext } from '../../domains/AuthenticatedRoute/contexts/AuthContext';
 import useConversations from '../../domains/Messaging/hooks/useConversations';
 import ConversationList from '../../domains/Messaging/views/ConversationList';
-
+import './ConversationPage.scss'
 const MessagingPage = () => {
     const authContext = useContext(AuthContext);
     const navigate = useNavigate();
@@ -29,9 +29,9 @@ const MessagingPage = () => {
     };
 
     return (
-        <div>
+        <div className="conversation-page">
             <NavBar userRole={userRole} />
-            <h1>Messages</h1>
+
             <ConversationList
                 conversations={conversations}
                 userId={userId}

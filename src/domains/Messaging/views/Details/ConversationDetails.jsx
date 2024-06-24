@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import NavBar from '../../../../components/ui/NavBar/NavBar';
 import { AuthContext } from '../../../../domains/AuthenticatedRoute/contexts/AuthContext';
 import Conversation from '../../../../components/Conversation/Conversation';
+import './ConversationDetail.scss';
 
 const ConversationDetail = () => {
     const { conversationId } = useParams();
@@ -19,9 +20,11 @@ const ConversationDetail = () => {
     }
 
     return (
-        <div>
-            <NavBar userRole={userRole} />
-            <Conversation userId={userId} conversationId={parseInt(conversationId, 10)} />
+        <div className='conversationDetail-page'>
+            <NavBar userRole={userRole} className="navbar" />
+            <div className="conversation-container">
+                <Conversation userId={userId} conversationId={parseInt(conversationId, 10)} />
+            </div>
         </div>
     );
 };
