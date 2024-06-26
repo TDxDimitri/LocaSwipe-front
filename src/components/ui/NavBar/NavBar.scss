@@ -1,40 +1,44 @@
 .navbar {
-    background-color: #002035;
-    border: 1px solid #002035;
-    border-radius: 0 0 11px 11px; 
-    padding: 1em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-decoration: none;
-  
-    .nav-item {
-      display: flex;
-      flex-direction: column; 
-      justify-content: center;
-      align-items: center;
-      text-decoration: none;
-      margin: 0 0.5em; 
-    }
-  
-    .nav-links {
+  background-color: #002035;
+  border: 1px solid #002035;
+  border-radius: 0 0 11px 11px;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  .nav-item {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-decoration: none;
-    }
-  
-    .linkTxt {
+      margin: 0 0.5em;
+  }
+
+  .nav-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+  }
+
+  .linkTxt {
       color: white;
       font-size: 0.7rem;
       text-decoration: none !important;
       margin: 0;
-      margin-top: 0.3rem; 
-    }
-  
-    .nav-item img, .nav-item svg {
-      margin-bottom: 0.3rem;
-    }
+      margin-top: 0.3rem;
   }
-  
+
+  .nav-item img, .nav-item svg {
+      margin-bottom: 0.3rem;
+  }
+}

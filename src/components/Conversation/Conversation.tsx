@@ -21,18 +21,30 @@ const Conversation: React.FC<{ userId: number, conversationId: number }> = ({ us
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
 
+    const firstMessage = messages[0];
+
     return (
         <div className="conversation">
-            <h2>Messages</h2>
+            {firstMessage && (
+                <div className="conversation-header">
+                    <img
+                        src={firstMessage.sender_avatar || 'default-avatar.png'}
+                        alt={`${firstMessage.sender_firstname} ${firstMessage.sender_lastname}`}
+                        className="avatar"
+                    />
+                    <div className="sender-info">
+                        <strong>{firstMessage.sender_firstname} {firstMessage.sender_lastname}</strong>
+                    </div>
+                </div>
+            )}
             <ul className="message-list">
                 {messages.map((message: Message) => (
                     <li
                         key={message.id}
-                        className={`message-item ${message.sender_id === userId ? 'sent' : 'received'
-                            }`}
+                        className={`message-item ${message.sender_id === userId ? 'sent' : 'received'}`}
                     >
                         <div className="message-content">
-                            <strong>{message.sender_firstname} {message.sender_lastname}:</strong> {message.content}
+                            {message.content}
                         </div>
                     </li>
                 ))}

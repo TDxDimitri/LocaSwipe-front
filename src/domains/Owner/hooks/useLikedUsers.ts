@@ -29,5 +29,5 @@ export const useLikedUsers = (accommodationId: number) => {
         fetchUsers();
     }, [accommodationId]);
 
-    return { users, loading, error };
+    return { users, loading, error, setUsers };
 };

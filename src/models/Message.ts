@@ -6,4 +6,5 @@ export interface Message {
   sender_lastname: string;
   content: string;
   created_at: string;
+  sender_avatar: string;
 }

@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.locaswipe.fr:3000";
+export const BASE_URL = "http://localhost:3000";
 // const LOCAL_URL = "http://localhost:3000";
 // https://api.locaswipe.fr:3000/
 
@@ -19,3 +19,5 @@ export const POST_CONVERSATION_URL = `${BASE_URL}/api/messaging/conversations`;
 // Owner-specific URLs
 export const USER_LIKES_URL = (accommodationId: number) => `${BASE_URL}/api/accommodations/${accommodationId}/likes`;
 export const ACCEPT_TENANT_URL = `${BASE_URL}/api/accommodations/accept-tenant`;
+export const SKIP_TENANT_URL = (ownerId: number, tenantId: number, accommodationId: number) => 
+  `${BASE_URL}/api/accommodations/skip-tenant/${ownerId}/${tenantId}/${accommodationId}`;

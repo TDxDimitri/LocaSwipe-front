@@ -15,6 +15,7 @@ import WelcomePage from './pages/welcome/index';
 import Choice from './pages/choice/choice';
 import './App.css';
 import OwnerHomePage from './pages/owner/index.tsx';
+import ProfilePage from './pages/profile/index.tsx';
 import { TenantHomePage } from './pages/tenant';
 import SignUpForm from './pages/signup/signUpForm.jsx';
 import MessagingPage from './pages/Messaging/index.jsx';
@@ -38,6 +39,14 @@ function App() {
               element={
                 <AuthenticatedRoute allowedRoles={['owner']}>
                   <OwnerHomePage />
+                </AuthenticatedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <AuthenticatedRoute allowedRoles={['tenant']}>
+                  <ProfilePage />
                 </AuthenticatedRoute>
               }
             />
@@ -67,6 +76,14 @@ function App() {
               }
             />
             <Route
+              path="/profile"
+              element={
+                <AuthenticatedRoute allowedRoles={['owner']}>
+                  <ProfilePage />
+                </AuthenticatedRoute>
+              }
+            />
+            <Route
               path="/owner/messages/:conversationId"
               element={
                 <AuthenticatedRoute allowedRoles={['owner']}>
@@ -82,7 +99,6 @@ function App() {
                 </AuthenticatedRoute>
               }
             />
-            {/* route pour afficher les utilisateurs ayant aimé une propriété */}
             <Route
               path="/accommodations/:accommodationId/likes"
               element={

@@ -1,5 +1,5 @@
 import axiosInstance from '../../../config/AxiosConfig';
-import { USER_LIKES_URL, ACCEPT_TENANT_URL } from '../../../config/ApiUrls';
+import { USER_LIKES_URL, ACCEPT_TENANT_URL, SKIP_TENANT_URL } from '../../../config/ApiUrls';
 
 interface User {
     id: number;
@@ -29,6 +29,17 @@ export const acceptTenant = async (ownerId: number, tenantId: number, accommodat
         return response.data;
     } catch (error) {
         console.error('Erreur lors de l\'acceptation du locataire:', error);
+        throw error;
+    }
+};
+
+export const skipTenant = async (ownerId: number, tenantId: number, accommodationId: number): Promise<void> => {
+    try {
+        const url = SKIP_TENANT_URL(ownerId, tenantId, accommodationId);
+        const response = await axiosInstance.delete(url);
+        return response.data;
+    } catch (error) {
+        console.error('Erreur lors du skip du locataire:', error);
         throw error;
     }
 };

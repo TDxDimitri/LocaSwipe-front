@@ -8,6 +8,28 @@
         margin-bottom: 10px;
     }
 
+    .conversation-header {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Center the header content horizontally */
+        gap: 10px;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 25px;
+    }
+
+    .sender-info {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
     .message-list {
         flex: 1;
         overflow-y: auto;

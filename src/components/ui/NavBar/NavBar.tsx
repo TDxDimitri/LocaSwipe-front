@@ -46,7 +46,7 @@ const NavBar: React.FC<NavBarProps> = ({ userRole }) => {
         </Link>
       </div>
       <div className="nav-item">
-        <Link to="/contact" className="nav-links">
+        <Link to="/profile" className="nav-links">
           <img src={profileIcon} alt="profil" />
           <p className="linkTxt">profil</p>
         </Link>
