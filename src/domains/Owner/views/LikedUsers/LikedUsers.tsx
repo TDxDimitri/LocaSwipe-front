@@ -4,9 +4,7 @@ import { useLikedUsers } from '../../hooks/useLikedUsers';
 import Tuile from '../../../../components/ui/Tuile/Tuile';
 import NavBar from '../../../../components/ui/NavBar/NavBar';
 import { AuthContext, AuthContextProps } from '../../../AuthenticatedRoute/contexts/AuthContext';
-import { acceptTenant, skipTenant } from '../../utils/LikedUsers'; // Importez la nouvelle fonction
-import { User } from '../../../../models/User';
-import './LikedUsers.scss';
+import { acceptTenant, skipTenant } from '../../utils/LikedUsers';
 
 const LikedUsers: React.FC = () => {
     const { accommodationId } = useParams<{ accommodationId: string }>();
