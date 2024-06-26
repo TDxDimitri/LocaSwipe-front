@@ -10,7 +10,7 @@ export default defineConfig({
       devOptions: {
         enabled: true,  // Permet de tester le service worker en mode développement
       },
-      includeAssets: ['vite.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
+      includeAssets: ['vite.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'logoMauve.png'],
       manifest: {
         name: 'LocaSwipe',
         short_name: 'LocaSwipe',
@@ -25,6 +25,11 @@ export default defineConfig({
           {
             src: '/logo512.png',
             sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            src: '/logoMauve.png',
+            sizes: '180x180',
             type: 'image/png',
           },
         ],
