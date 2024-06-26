@@ -82,7 +82,6 @@ function App() {
                 </AuthenticatedRoute>
               }
             />
-            {/* route pour afficher les utilisateurs ayant aimé une propriété */}
             <Route
               path="/accommodations/:accommodationId/likes"
               element={
