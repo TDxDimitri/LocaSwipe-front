@@ -102,7 +102,9 @@ const SwipeableAccommodationCard = ({ accommodations, onLike }) => {
                                     <p>Loyer HC: {accommodation.rent} €</p>
                                     <p>Type: {accommodation.property_type}</p>
                                     <p>Surface: {accommodation.surface_area} m²</p>
-                                    <button className="more-info-button" onClick={() => toggleDescription(index)}>
+                                    <button className="more-info-button"
+                                        onClick={() => toggleDescription(index)}
+                                        onTouchStart={() => toggleDescription(index)}>
                                         {showDescription[index] ? 'Masquer la description' : 'En savoir plus'}
                                     </button>
                                 </div>

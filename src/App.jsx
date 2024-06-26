@@ -15,6 +15,7 @@ import WelcomePage from './pages/welcome/index';
 import Choice from './pages/choice/choice';
 import './App.css';
 import OwnerHomePage from './pages/owner/index.tsx';
+import ProfilePage from './pages/profile/index.tsx';
 import { TenantHomePage } from './pages/tenant';
 import SignUpForm from './pages/signup/signUpForm.jsx';
 import MessagingPage from './pages/Messaging/index.jsx';
@@ -42,6 +43,14 @@ function App() {
               }
             />
             <Route
+              path="/profile"
+              element={
+                <AuthenticatedRoute allowedRoles={['tenant']}>
+                  <ProfilePage />
+                </AuthenticatedRoute>
+              }
+            />
+            <Route
               path="/tenant"
               element={
                 <AuthenticatedRoute allowedRoles={['tenant']}>
@@ -63,6 +72,14 @@ function App() {
               element={
                 <AuthenticatedRoute allowedRoles={['tenant']}>
                   <MessagingPage />
+                </AuthenticatedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <AuthenticatedRoute allowedRoles={['owner']}>
+                  <ProfilePage />
                 </AuthenticatedRoute>
               }
             />
